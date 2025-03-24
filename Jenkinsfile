@@ -19,25 +19,7 @@ pipeline {
             }
         }
 
-        stage('Setup Node.js') {
-            steps {
-            script {
-                // Check if Node.js is installed
-                def nodeInstalled = sh(script: 'which node || true', returnStdout: true).trim()
-                if (!nodeInstalled) {
-                // Install Node.js using NVM
-                sh '''
-                    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
-                    export NVM_DIR="$HOME/.nvm"
-                    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-                    nvm install 21
-                    nvm use 21
-                '''
-                }
-            }
-            }
-        }
-
+       
         stage('Install Dependencies') {
             steps {
             sh 'npm install'
