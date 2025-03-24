@@ -1,7 +1,7 @@
 #Build stage
 FROM node:21 AS builder
 WORKDIR /app
-COPY package*.json ./app
+COPY package*.json ./
 RUN npm install
 COPY . .
 RUN npm run build
